@@ -2,8 +2,8 @@ from django.urls import path
 from rest_framework.routers import SimpleRouter
 
 from lms.apps import LmsConfig
-from lms.views import (CourseViewSet, LessonCreateApiView, LessonDestroyApiView, LessonListApiView,
-                       LessonRetrieveApiView, LessonUpdateApiView)
+from lms.views import (CourseViewSet, LessonCreateAPIView, LessonDestroyAPIView, LessonListAPIView,
+                       LessonRetrieveAPIView, LessonUpdateAPIView)
 
 app_name = LmsConfig.name
 
@@ -11,11 +11,11 @@ router = SimpleRouter()
 router.register("courses", CourseViewSet)
 
 urlpatterns = [
-    path("lessons/", LessonListApiView.as_view(), name="lessons_list"),
-    path("lessons/create/", LessonCreateApiView.as_view(), name="lesson_create"),
-    path("lessons/<int:pk>/update/", LessonUpdateApiView.as_view(), name="lesson_update"),
-    path("lessons/<int:pk>/", LessonRetrieveApiView.as_view(), name="lesson_retrieve"),
-    path("lessons/<int:pk>/delete/", LessonDestroyApiView.as_view(), name="lessons_list")
+    path("lessons/", LessonListAPIView.as_view(), name="lessons_list"),
+    path("lessons/create/", LessonCreateAPIView.as_view(), name="lesson_create"),
+    path("lessons/<int:pk>/update/", LessonUpdateAPIView.as_view(), name="lesson_update"),
+    path("lessons/<int:pk>/", LessonRetrieveAPIView.as_view(), name="lesson_retrieve"),
+    path("lessons/<int:pk>/delete/", LessonDestroyAPIView.as_view(), name="lessons_list")
 ]
 
 urlpatterns += router.urls
