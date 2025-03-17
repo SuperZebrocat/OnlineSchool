@@ -1,0 +1,46 @@
+[
+{
+    "model": "lms.lesson",
+    "pk": 4,
+    "fields": {
+        "name": "Вводный урок",
+        "description": "Урок-знакомство",
+        "preview_image": "",
+        "video_url": "http://example.com/video",
+        "course": 3
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 5,
+    "fields": {
+        "name": "Урок 1",
+        "description": "Вводный урок",
+        "preview_image": "",
+        "video_url": "http://example.com/video/1/",
+        "course": 4
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 6,
+    "fields": {
+        "name": "Урок 2",
+        "description": "Основы кулинарии",
+        "preview_image": "",
+        "video_url": "http://example.com/video/2/",
+        "course": 4
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 7,
+    "fields": {
+        "name": "Основы программирования",
+        "description": "Введение в программирование",
+        "preview_image": "",
+        "video_url": "http://example.com/video/3/",
+        "course": 3
+    }
+}
+]
