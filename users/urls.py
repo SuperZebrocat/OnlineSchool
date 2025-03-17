@@ -12,4 +12,3 @@ urlpatterns = [
     path("payments/<int:pk>/update/", PaymentUpdateAPIView.as_view(), name="payment_detail"),
     path("payments/<int:pk>/delete/", PaymentDestroyAPIView.as_view(), name="payment_delete"),
 ]
-
