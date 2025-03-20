@@ -1,4 +1,6 @@
 from django.urls import path
+from rest_framework.permissions import AllowAny
+
 from users.apps import UsersConfig
 from users.views import PaymentCreateAPIView, PaymentListAPIView, PaymentRetrieveAPIView, PaymentUpdateAPIView, \
     PaymentDestroyAPIView, UserCreateAPIView
@@ -16,6 +18,6 @@ urlpatterns = [
     path("payments/<int:pk>/update/", PaymentUpdateAPIView.as_view(), name="payment_detail"),
     path("payments/<int:pk>/delete/", PaymentDestroyAPIView.as_view(), name="payment_delete"),
     path('register/', UserCreateAPIView.as_view(), name='register'),
-    path('login/', TokenObtainPairView.as_view(), name='login'),
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('login/', TokenObtainPairView.as_view(permission_classes=(AllowAny,)), name='login'),
+    path('token/refresh/', TokenRefreshView.as_view(permission_classes=(AllowAny,)), name='token_refresh'),
 ]
