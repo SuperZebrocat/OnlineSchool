@@ -9,10 +9,18 @@ class CourseViewSet(ModelViewSet):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 class LessonCreateAPIView(generics.CreateAPIView):
     queryset = Lesson.objects.all()
     serializer_class = LessonSerializer
+
+    def perform_create(self, serializer):
+        lesson = serializer.save()
+        lesson.owner = self.request.user
+        lesson.save()
 
 
 class LessonListAPIView(generics.ListAPIView):
@@ -41,4 +49,3 @@ class CourseDetailAPIView(generics.RetrieveAPIView):
     def get_object(self):
         course_id = self.kwargs['pk']
         return get_object_or_404(Course, id=course_id)
-
