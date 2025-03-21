@@ -1,6 +1,6 @@
 from django.db import models
 
-from users.models import User
+from config import settings
 
 
 class Course(models.Model):
@@ -15,7 +15,9 @@ class Course(models.Model):
     description = models.TextField(
         null=True, blank=True, verbose_name="Описание курса", help_text="Введите описание курса"
     )
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Владелец")
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Владелец", null=True, blank=True
+    )
 
     class Meta:
         verbose_name = "Курс"
@@ -38,7 +40,9 @@ class Lesson(models.Model):
     course = models.ForeignKey(
         Course, related_name="lessons", on_delete=models.CASCADE, verbose_name="Курс", help_text="Выберите курс"
     )
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Владелец")
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Владелец", null=True, blank=True
+    )
 
     class Meta:
         verbose_name = "Урок"
