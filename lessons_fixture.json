@@ -1,46 +1,50 @@
 [
 {
     "model": "lms.lesson",
-    "pk": 4,
+    "pk": 21,
     "fields": {
-        "name": "Вводный урок",
-        "description": "Урок-знакомство",
+        "name": "Урок 1",
+        "description": "Вводный урок начало",
         "preview_image": "",
-        "video_url": "http://example.com/video",
-        "course": 3
+        "video_url": "http://127.0.0.1:8000/example",
+        "course": 5,
+        "owner": 7
     }
 },
 {
     "model": "lms.lesson",
-    "pk": 5,
+    "pk": 22,
+    "fields": {
+        "name": "Урок 2",
+        "description": "Основы программирования",
+        "preview_image": "",
+        "video_url": "http://127.0.0.1:8000/example",
+        "course": 5,
+        "owner": 7
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 24,
     "fields": {
         "name": "Урок 1",
         "description": "Вводный урок",
         "preview_image": "",
         "video_url": "http://example.com/video/1/",
-        "course": 4
+        "course": 6,
+        "owner": 2
     }
 },
 {
     "model": "lms.lesson",
-    "pk": 6,
+    "pk": 25,
     "fields": {
         "name": "Урок 2",
-        "description": "Основы кулинарии",
+        "description": "Материалы и оборудование",
         "preview_image": "",
         "video_url": "http://example.com/video/2/",
-        "course": 4
-    }
-},
-{
-    "model": "lms.lesson",
-    "pk": 7,
-    "fields": {
-        "name": "Основы программирования",
-        "description": "Введение в программирование",
-        "preview_image": "",
-        "video_url": "http://example.com/video/3/",
-        "course": 3
+        "course": 6,
+        "owner": 2
     }
 }
 ]
