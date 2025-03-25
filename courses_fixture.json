@@ -1,22 +1,22 @@
 [
 {
     "model": "lms.course",
-    "pk": 5,
+    "pk": 7,
     "fields": {
-        "name": "Python",
+        "name": "Кройка и шитье",
         "preview_image": "",
         "description": "Курс для начинающих",
-        "owner": 7
+        "owner": 10
     }
 },
 {
     "model": "lms.course",
-    "pk": 6,
+    "pk": 8,
     "fields": {
         "name": "Кулинарный курс",
         "preview_image": "",
-        "description": "Курс для тех, кто хочет научиться готовить вкусно",
-        "owner": 2
+        "description": "Курс для тех, кто хочет научиться готовить",
+        "owner": 11
     }
 }
 ]
