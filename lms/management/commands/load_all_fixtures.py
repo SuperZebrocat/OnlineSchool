@@ -1,17 +1,22 @@
 from django.core.management.base import BaseCommand
 from django.core.management import call_command
 from lms.models import Course, Lesson
-from users.models import Payment
+from users.models import Payment, User
+from django.contrib.auth.models import Group
 
 
 class Command(BaseCommand):
     help = 'Load all fixtures into the database'
 
     def handle(self, *args, **kwargs):
+        User.objects.all().delete()
+        Group.objects.all().delete()
         Course.objects.all().delete()
         Lesson.objects.all().delete()
         Payment.objects.all().delete()
 
+        call_command('loaddata', 'groups_fixture.json')
+        call_command('loaddata', 'users_fixture.json')
         call_command('loaddata', 'courses_fixture.json')
         call_command('loaddata', 'lessons_fixture.json')
         call_command('loaddata', 'payments_fixture.json')
