@@ -1,20 +1,22 @@
 [
 {
     "model": "lms.course",
-    "pk": 3,
+    "pk": 5,
     "fields": {
         "name": "Python",
         "preview_image": "",
-        "description": null
+        "description": "Курс для начинающих",
+        "owner": 7
     }
 },
 {
     "model": "lms.course",
-    "pk": 4,
+    "pk": 6,
     "fields": {
-        "name": "Cooking Course",
+        "name": "Кулинарный курс",
         "preview_image": "",
-        "description": "Курс для тех, кто хочет научиться готовить"
+        "description": "Курс для тех, кто хочет научиться готовить вкусно",
+        "owner": 2
     }
 }
 ]
