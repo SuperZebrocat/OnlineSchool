@@ -1,46 +1,50 @@
 [
 {
     "model": "lms.lesson",
-    "pk": 4,
-    "fields": {
-        "name": "Вводный урок",
-        "description": "Урок-знакомство",
-        "preview_image": "",
-        "video_url": "http://example.com/video",
-        "course": 3
-    }
-},
-{
-    "model": "lms.lesson",
-    "pk": 5,
+    "pk": 26,
     "fields": {
         "name": "Урок 1",
-        "description": "Вводный урок",
+        "description": "Введение в моделирование",
         "preview_image": "",
         "video_url": "http://example.com/video/1/",
-        "course": 4
+        "course": 7,
+        "owner": 10
     }
 },
 {
     "model": "lms.lesson",
-    "pk": 6,
+    "pk": 27,
     "fields": {
         "name": "Урок 2",
-        "description": "Основы кулинарии",
+        "description": "Материалы и оборудование",
         "preview_image": "",
         "video_url": "http://example.com/video/2/",
-        "course": 4
+        "course": 7,
+        "owner": 10
     }
 },
 {
     "model": "lms.lesson",
-    "pk": 7,
+    "pk": 28,
     "fields": {
-        "name": "Основы программирования",
-        "description": "Введение в программирование",
+        "name": "Урок 1",
+        "description": "Урок-знакомство",
         "preview_image": "",
         "video_url": "http://example.com/video/3/",
-        "course": 3
+        "course": 8,
+        "owner": 11
+    }
+},
+{
+    "model": "lms.lesson",
+    "pk": 29,
+    "fields": {
+        "name": "Урок 2",
+        "description": "Что, где, когда?",
+        "preview_image": "",
+        "video_url": "http://example.com/video/4/",
+        "course": 8,
+        "owner": 11
     }
 }
 ]

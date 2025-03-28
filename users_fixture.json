@@ -1,0 +1,84 @@
+[
+{
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$qoaiJmLmaNS0SutLVKZMnS$L0nbdPXWcmaGQAiiX5goOvRDMYGr+GW7ZZ58Ri1GEOc=",
+        "last_login": "2025-03-25T09:58:09.641Z",
+        "is_superuser": true,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-03-25T09:57:46.644Z",
+        "email": "adminuser@example.com",
+        "phone_number": null,
+        "city": null,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 9,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$SgKMpWiNvkd25wiVfKvXl4$IwoEMNhZglmxhw9U0oIjs9kbCFs+ryforgOMqrPGTvg=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-25T10:07:06Z",
+        "email": "moderator@email.com",
+        "phone_number": null,
+        "city": null,
+        "avatar": "",
+        "groups": [
+            2
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 10,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$LBj7yi80T0uVIMBfqOXxmz$i9A096ilLm+iCJCTadfc7XD4pCL8Z/J0YjhzD0iXhBE=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-25T10:07:59Z",
+        "email": "test@email.com",
+        "phone_number": null,
+        "city": null,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "users.user",
+    "pk": 11,
+    "fields": {
+        "password": "pbkdf2_sha256$870000$YXZ6Kx69G1gvTSfB15kcCB$eX5P+vTqV/tI4xWNxajy8c0KY6J7ywL2vf3Zw2TJICY=",
+        "last_login": null,
+        "is_superuser": false,
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-03-25T10:08:37Z",
+        "email": "test2@email.com",
+        "phone_number": null,
+        "city": null,
+        "avatar": "",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
