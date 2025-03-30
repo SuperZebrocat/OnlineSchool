@@ -6,7 +6,7 @@ class VideoLinkValidator:
         self.field = field
 
     def __call__(self, value):
-        pattern = "www.youtube.com"
+        pattern = "youtube"
         tmp_value = dict(value).get(self.field)
         if tmp_value and pattern not in tmp_value:
             raise serializers.ValidationError(
