@@ -36,9 +36,9 @@ class Lesson(models.Model):
         verbose_name="Превью урока",
         help_text="Загрузите превью урока",
     )
-    video_url = models.URLField(max_length=200)
+    video_url = models.URLField(max_length=200, blank=True, null=True)
     course = models.ForeignKey(
-        Course, related_name="lessons", on_delete=models.CASCADE, verbose_name="Курс", help_text="Выберите курс"
+        Course, related_name="lessons", on_delete=models.CASCADE, verbose_name="Курс", help_text="Выберите курс", blank=True, null=True
     )
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Владелец", null=True, blank=True
