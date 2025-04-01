@@ -36,9 +36,9 @@ class Lesson(models.Model):
         verbose_name="Превью урока",
         help_text="Загрузите превью урока",
     )
-    video_url = models.URLField(max_length=200)
+    video_url = models.URLField(max_length=200, blank=True, null=True)
     course = models.ForeignKey(
-        Course, related_name="lessons", on_delete=models.CASCADE, verbose_name="Курс", help_text="Выберите курс"
+        Course, related_name="lessons", on_delete=models.CASCADE, verbose_name="Курс", help_text="Выберите курс", blank=True, null=True
     )
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name="Владелец", null=True, blank=True
@@ -47,3 +47,16 @@ class Lesson(models.Model):
     class Meta:
         verbose_name = "Урок"
         verbose_name_plural = "Уроки"
+
+
+class Subscription(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name="subscription", on_delete=models.CASCADE, verbose_name="Пользователь")
+    course = models.ForeignKey(Course, related_name="subscription", on_delete=models.CASCADE, verbose_name="Курс")
+
+    class Meta:
+        unique_together = ('user', 'course')  #пользователь может подписаться на рассылку один раз
+        verbose_name = "Подписка"
+        verbose_name_plural = "Подписки"
+
+    def __str__(self):
+        return f"{self.user} подписан на обновления курса '{self.course}'"
