@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "lms",
     "django_filters",
+    "django_celery_beat",
 ]
 
 REST_FRAMEWORK = {
@@ -125,3 +126,14 @@ SIMPLE_JWT = {
 }
 
 STRIPE_API_KEY = os.getenv("STRIPE_API_KEY")
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+
+# CELERY_TIMEZONE = "Australia/Tasmania"
+CELERY_TIMEZONE = "Europe/Kaliningrad"
+
+CELERY_TASK_TRACK_STARTED = True
+
+CELERY_TASK_TIME_LIMIT = 30 * 60
