@@ -127,13 +127,22 @@ SIMPLE_JWT = {
 
 STRIPE_API_KEY = os.getenv("STRIPE_API_KEY")
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = "redis://localhost:6379/"
 
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = "redis://localhost:6379/"
 
-# CELERY_TIMEZONE = "Australia/Tasmania"
-CELERY_TIMEZONE = "Europe/Kaliningrad"
+CELERY_TIMEZONE = TIME_ZONE
 
 CELERY_TASK_TRACK_STARTED = True
 
 CELERY_TASK_TIME_LIMIT = 30 * 60
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'ekatesting@yandex.ru'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
