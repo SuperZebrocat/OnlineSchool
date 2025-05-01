@@ -10,6 +10,7 @@ from lms.models import Course, Lesson, Subscription
 from lms.paginators import CustomPagination
 from lms.serializers import CourseSerializer, LessonSerializer, SubscriptionSerializer
 from users.permissions import IsModer, IsOwner, IsNotModer
+from .tasks import send_update_mail
 
 
 @method_decorator(name="list", decorator=swagger_auto_schema(operation_description="Список курсов."))
@@ -25,6 +26,18 @@ class CourseViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+
+    def update(self, request, *args, **kwargs):
+        course = get_object_or_404(Course, pk=kwargs['pk'])
+
+        response = super().update(request, *args, **kwargs)
+
+        subscriptions = Subscription.objects.filter(course=course).select_related('user')
+
+        for subscription in subscriptions:
+            send_update_mail.delay(course.name, subscription.user.email)
+
+        return response
 
     def get_permissions(self):
         if self.action == "create":
