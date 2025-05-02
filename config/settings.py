@@ -127,9 +127,9 @@ SIMPLE_JWT = {
 
 STRIPE_API_KEY = os.getenv("STRIPE_API_KEY")
 
-CELERY_BROKER_URL = "redis://localhost:6379/"
+CELERY_BROKER_URL = f"redis://{os.getenv("REDIS_HOST")}:{os.getenv("REDIS_PORT")}/"
 
-CELERY_RESULT_BACKEND = "redis://localhost:6379/"
+CELERY_RESULT_BACKEND = f"redis://{os.getenv("REDIS_HOST")}:{os.getenv("REDIS_PORT")}/"
 
 CELERY_TIMEZONE = TIME_ZONE
 
