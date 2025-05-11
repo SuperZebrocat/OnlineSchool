@@ -30,9 +30,9 @@ jobs:
       postgres:
         image: postgres:16
         env:
-          POSTGRES_DB: ${{ secrets.NAME }}
-          POSTGRES_USER: ${{ secrets.USER }}
-          POSTGRES_PASSWORD: ${{ secrets.PASSWORD }}
+          POSTGRES_DB: projecttest
+          POSTGRES_USER: postgres
+
         ports: ["5432:5432"] #почему не 5433?
         options: >-
           --health-cmd pg_isready
