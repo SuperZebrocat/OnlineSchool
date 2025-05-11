@@ -1,7 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
-import eventlet
-eventlet.monkey_patch()  # noqa: E402
+# import eventlet
+# eventlet.monkey_patch()  # noqa: E402
 
 import os
 from celery import Celery

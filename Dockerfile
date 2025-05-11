@@ -13,12 +13,8 @@ RUN apt-get update && apt-get install -y \
 
 ENV PYTHONUNBUFFERED=1 PYTHONDONTWRITEBYTECODE=1
 
-# Копируем файл зависимостей в контейнер
-COPY pyproject.toml poetry.lock* ./
-
-# Устанавливаем зависимости Python
-RUN poetry config virtualenvs.create false && \
-    poetry install --no-interaction --no-ansi
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
 
 # Копируем исходный код приложения в контейнер
 COPY . .
