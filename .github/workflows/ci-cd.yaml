@@ -32,6 +32,7 @@ jobs:
         env:
           POSTGRES_DB: projecttest
           POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
 
         ports: ["5432:5432"] #почему не 5433?
         options: >-
