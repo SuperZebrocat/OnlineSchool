@@ -1,8 +1,6 @@
 import datetime
 
 from django.utils import timezone
-from datetime import timedelta
-
 from celery import shared_task
 from django.core.mail import send_mail
 
@@ -35,9 +33,5 @@ def check_user_login():
     inactive_date = today - datetime.timedelta(days=30)
 
     User.objects.filter(
-        is_active=True,
-        is_staff=False,
-        is_superuser=False,
-        last_login__isnull=False,
-        last_login__lt=inactive_date
+        is_active=True, is_staff=False, is_superuser=False, last_login__isnull=False, last_login__lt=inactive_date
     ).update(is_active=False)
