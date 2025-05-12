@@ -84,4 +84,4 @@ jobs:
           docker stop onlineschool || true
           docker rm onlineschool || true
           docker run -d --name onlineschool -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/onlineschool:${{ github.sha }}
-          EOF            
+          EOF
