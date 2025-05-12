@@ -15,7 +15,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install flake8
-          if [ -f requirements.txt]; then pip install -r requirements.txt; fi
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Lint with flake8
         run: |
           
@@ -84,4 +84,4 @@ jobs:
           docker stop onlineschool || true
           docker rm onlineschool || true
           docker run -d --name onlineschool -p 80:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/onlineschool:${{ github.sha }}
-          EOF            
+          >>EOF            
