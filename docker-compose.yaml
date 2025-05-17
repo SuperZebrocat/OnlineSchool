@@ -5,12 +5,10 @@ services:
       dockerfile: Dockerfile
     env_file:
       - .env
-#    environment:
-#      - NAME=${NAME}
-#      - USER=${USER}
-#      - PASSWORD=${PASSWORD}
-#      - HOST=db
-#      - PORT=5432
+    environment:
+      - POSTGRES_DB=${NAME}
+      - POSTGRES_USER=${USER}
+      - POSTGRES_PASSWORD=${PASSWORD}
     container_name: app
     command: bash -c "python manage.py collectstatic --no-input && python manage.py migrate && gunicorn config.wsgi:application --bind 0.0.0.0:8000"
     expose:
@@ -46,7 +44,7 @@ services:
   redis:
     image: redis
     container_name: redis
-    command: bash -c "redis-server --save 20 1 -- loglevel warning"
+    command: bash -c "redis-server --save 20 1 --loglevel warning"
     volumes:
       - .data.cache:/data
     ports:
@@ -82,7 +80,7 @@ services:
       dockerfile: Dockerfile
     container_name: nginx
     ports:
-      - "80:80"
+      - "8080:8080"
     volumes:
       - static_files:/app/static
     depends_on:
