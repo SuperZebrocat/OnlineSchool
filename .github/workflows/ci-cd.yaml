@@ -76,7 +76,7 @@ jobs:
 
       - name: Deploy to server
         run: |
-          rsync -avz --delete --exclude='.git' -e "ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60" ./ ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.DEPLOY_DIR }}
+#          rsync -avz --delete --exclude='.git' -e "ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60" ./ ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.DEPLOY_DIR }}
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'               
               docker stop onlineschool|| true
               docker rm onlineschool || true
