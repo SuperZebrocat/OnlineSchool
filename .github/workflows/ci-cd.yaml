@@ -77,10 +77,8 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'               
-              docker stop onlineschool|| true
-              docker rm onlineschool || true
-              cd /home/ekatesting/app
-              docker-compose down || true
-              docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/onlineschool:${{ github.sha }}
-              docker run -d --name onlineschool -p 90:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/onlineschool:${{ github.sha }}
+              sudo docker stop onlineschool|| true
+              sudo docker rm onlineschool || true                            
+              sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/onlineschool:${{ github.sha }}
+              sudo docker run -d --name onlineschool -p 90:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/onlineschool:${{ github.sha }}
           EOF
