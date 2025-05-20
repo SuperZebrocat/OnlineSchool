@@ -28,11 +28,11 @@ class CourseViewSet(ModelViewSet):
         serializer.save(owner=self.request.user)
 
     def update(self, request, *args, **kwargs):
-        course = get_object_or_404(Course, pk=kwargs['pk'])
+        course = get_object_or_404(Course, pk=kwargs["pk"])
 
         response = super().update(request, *args, **kwargs)
 
-        subscriptions = Subscription.objects.filter(course=course).select_related('user')
+        subscriptions = Subscription.objects.filter(course=course).select_related("user")
 
         for subscription in subscriptions:
             send_update_mail.delay(course.name, subscription.user.email)

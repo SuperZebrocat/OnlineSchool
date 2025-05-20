@@ -7,8 +7,14 @@ from lms.validators import VideoLinkValidator
 class LessonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lesson
-        fields = ('name', 'description', 'preview_image', 'video_url', 'course',)
-        validators = [VideoLinkValidator(field='video_url')]
+        fields = (
+            "name",
+            "description",
+            "preview_image",
+            "video_url",
+            "course",
+        )
+        validators = [VideoLinkValidator(field="video_url")]
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -24,7 +30,7 @@ class CourseSerializer(serializers.ModelSerializer):
         return instance.lessons.count()
 
     def get_is_subscribed(self, instance):
-        user = self.context['request'].user  # Получаем текущего пользователя
+        user = self.context["request"].user  # Получаем текущего пользователя
         return Subscription.objects.filter(user=user, course=instance).exists()  # Проверяем, есть ли подписка
 
 
