@@ -47,38 +47,24 @@ jobs:
       - name: Run tests
         run: python manage.py test
 
-  build:
-    runs-on: ubuntu-latest
+  deploy:
     needs: test
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Check out code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Log in to Docker Hub
-        run: echo ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
-
-      - name: Build Docker image
-        run: docker build -t ${{ secrets.DOCKER_HUB_USERNAME }}/onlineschool:${{ github.sha }} .
-
-      - name: Push Docker image to Docker Hub
-        run: docker push ${{ secrets.DOCKER_HUB_USERNAME }}/onlineschool:${{ github.sha }}
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Set up SSH
+      - name: Set up SSH agent
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: Deploy to server
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'               
-              sudo docker stop onlineschool|| true
-              sudo docker rm onlineschool || true                            
-              sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/onlineschool:${{ github.sha }}
-              sudo docker run -d --name onlineschool -p 90:8000 ${{ secrets.DOCKER_HUB_USERNAME }}/onlineschool:${{ github.sha }}
+        run: | 
+          rsync -avz --exclude='.git' -e "ssh -o StrictHostKeyChecking=no -o ServerAliveInterval=60" ./ ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }}:${{ secrets.DEPLOY_DIR }}
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SERVER_IP }} << 'EOF'   
+              cd ${{ secrets.DEPLOY_DIR }} || exit
+              docker compose down || true              
+              docker compose up -d   
           EOF
